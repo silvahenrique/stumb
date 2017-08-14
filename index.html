@@ -7,32 +7,9 @@
   <body>
     <div ng-app="app">
       <p><a href="#!/home">Home</a></p>
-      <p><a href="#!/main">Main</a></p>
+      <p><a href="#!/cep">Cep</a></p>
       <div ng-view></div>
-
-      <div ng-controller="appController">
-        <h2>App Controller</h2>
-        <p>
-          <input type="text" ng-model="firstName">
-        </p>
-        <p>
-          <input type="text" ng-model="lastName">
-        </p>
-        {{ firstName + " " + lastName }}
-        <p>
-          <button ng-click="addClient()" type="button" name="button">Add New Client</button>
-        </p>
-      </div>
-      <hr>
-      <div ng-controller="cepController">
-        <h2>Cep Controller</h2>
-        <p>
-          <input type="text" ng-model="cep">
-        </p>
-        {{ cep }}
-      </div>
     </div>
-
     <script src="build/js/app.bundle.js"></script>
   </body>
 </html>

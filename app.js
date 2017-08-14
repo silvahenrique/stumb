@@ -1,3 +1,3 @@
 require('./app.routing');
-require('./controllers/appController');
+require('./controllers/homeController');
 require('./controllers/cepController');
