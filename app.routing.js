@@ -1,13 +1,15 @@
 var app = require('./bootstrap-angular');
+require('./controllers/homeController');
+require('./controllers/cepController');
 
 app.config(function($routeProvider) {
     $routeProvider
     .when("/home", {
         templateUrl : "views/home.html",
-        contoller: "controllers/homeController"
+        contoller: "homeController"
     })
     .when("/cep", {
         templateUrl : "views/cep.html",
-        contoller: "controllers/cepController"
+        contoller: "cepController"
     })
 });
