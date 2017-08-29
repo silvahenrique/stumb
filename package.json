@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "angular": "^1.6.5",
+    "croppie": "^2.5.0",
     "webpack": "^3.5.3",
     "webpack-dev-server": "^2.7.1"
   },
