@@ -4,7 +4,7 @@ require('./controllers/cepController');
 
 app.config(function($routeProvider) {
     $routeProvider
-    .when("/", {
+    .when("/home", {
         templateUrl : "views/home.html",
         contoller: "homeController"
     })
@@ -12,7 +12,7 @@ app.config(function($routeProvider) {
         templateUrl : "views/cep.html",
         contoller: "cepController"
     })
-    .when("/crop", {
+    .when("/", {
         templateUrl : "views/crop.html",
         contoller: "cropController"
     })

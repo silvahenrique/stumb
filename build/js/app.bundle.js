@@ -2152,7 +2152,7 @@ __webpack_require__(14);
 
 app.config(["$routeProvider", function($routeProvider) {
     $routeProvider
-    .when("/", {
+    .when("/home", {
         templateUrl : "views/home.html",
         contoller: "homeController"
     })
@@ -2160,7 +2160,7 @@ app.config(["$routeProvider", function($routeProvider) {
         templateUrl : "views/cep.html",
         contoller: "cepController"
     })
-    .when("/crop", {
+    .when("/", {
         templateUrl : "views/crop.html",
         contoller: "cropController"
     })
@@ -37351,11 +37351,7 @@ var app = __webpack_require__(0);
 
 app.directive("imageCroppie", function() {
     return {
-        template: `
-            <div>
-                <img id='{{elem}}' src='{{src}}' style='width: {{width}}px; height: {{height}}px;' />
-                <button ng-click='crop()' style="{{btnStyle}}" type="button">Salvar</button>
-            </div>`,
+        template: "<div><img id='{{elem}}' src='{{src}}' style='width: {{width}}px; height: {{height}}px;' /><button ng-click='crop()' style='{{btnStyle}}' type='button'>Salvar</button></div>",
         scope: {
             elem: '@elem',
             src: '@src',
@@ -37364,28 +37360,34 @@ app.directive("imageCroppie", function() {
             btnStyle: '@btnStyle'
         },
         compile: function(element, attrs) {
-            var elem = element.find('img');
+            return {
+                post: function postLink(scope, iElement, iAttrs, controller) {
+                    var elem = iElement.find('img');
 
-            var croppie = new Croppie(elem, {
-                viewport: { width: 100, height: 100 },
-                boundary: { width: 300, height: 300 },
-                showZoomer: false,
-                enableOrientation: true
-            });
+                    var croppie = new Croppie(elem, {
+                        viewport: { width: 100, height: 100 },
+                        boundary: { width: 300, height: 300 },
+                        showZoomer: false,
+                        enableOrientation: true
+                    });
 
-            croppie.bind({
-                url: attrs.src,
-                orientation: 4
-            });
+                    croppie.bind({
+                        url: attrs.src,
+                        orientation: 4
+                    });
 
-            croppie.result('blob').then(function(blob) {
-                // do something with cropped blob
-            })
+                    croppie.result('blob').then(function(blob) {
+                        // do something with cropped blob
+                    })
+
+                    scope.crop = function() {
+                        alert('Cortou!');
+                    };
+                }
+            }
         },
         link: function(scope, element, attrs) {
-            scope.crop = function() {
-                alert('Cortou!');
-            };
+
         }
     };
 });
